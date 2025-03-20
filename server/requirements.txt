@@ -1,0 +1,6 @@
+requests
+praw
+pytz
+python-dateutil
+Flask
+Flask-Cors
