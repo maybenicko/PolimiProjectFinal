@@ -6,14 +6,11 @@ const apiEndpoints = [
 
 async function fetchAllCoins() {
     try {
-        // Fetch data from all three endpoints
         const responses = await Promise.all(apiEndpoints.map(url => fetch(url)));
         const data = await Promise.all(responses.map(res => res.json()));
 
-        // Flatten the results into a single array
         const coins = data.flat();
 
-        // Pass the fetched data to the rendering function
         renderCoins(coins);
     } catch (error) {
         console.error("Error fetching coin data:", error);
@@ -28,7 +25,7 @@ function renderCoins(coins) {
         coinCard.classList.add("coin-card");
         const img_ = "static/images/favicon_.ico" // to remove but need to fix ipfs
         coinCard.innerHTML = `
-            <img src="${img_}" alt="${coin.name}">
+            <img src="${coin.image}" alt="${coin.name}">
             <h2>${coin.name} (${coin.symbol})</h2>
         `;
 

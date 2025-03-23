@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Electrolize&family=Rajdhani:wght@400;700&display=swap');
+
+
+body {
+    font-family: 'Electrolize', sans-serif;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(20, 20, 20);
+    cursor: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+h1 {
+    margin-left: 2.5%;
+    margin-bottom: 1%;
+    color: rgb(200, 200, 200);
+    font-size: 400%;
+    text-shadow: #b5b5b53b 3px 3px 3px;
+    text-align: center;
+}
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.image-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-container:hover {
+    transform: scale(1.1);
+}
+
+
+::selection {
+    background-color: #ffc053;
+    color: rgb(74, 74, 74);
+}
