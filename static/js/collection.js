@@ -6,10 +6,18 @@ document.addEventListener("DOMContentLoaded", function() {
         imgContainer.classList.add('image-container');
 
         const img = document.createElement('img');
-        img.src = `static/images/${i}.png`;  // Path to your images
+        img.src = `static/images/${i}.png`;
         img.alt = `Image ${i}`;
 
         imgContainer.appendChild(img);
         gallery.appendChild(imgContainer);
     }
 });
+
+function goToPrevious() {
+    window.location.href = "index.html";
+}
+
+function goToNext() {
+    window.location.href = "coins.html";
+}
