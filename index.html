@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SBB</title>
   <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/cursor.css">
   <link rel="icon" type="image/ico" href="static/images/favicon_.ico">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.umd/ethers.umd.min.js"></script>
 </head>
 <body>
 
-  <h1>Solidity Bart Business</h1>
+  <h1>Sepolia Bart Business</h1>
 
   <div class="image-container">
     <img id="dynamic-image" src="static/images/0.png" alt="Rotating Image">
@@ -17,15 +19,16 @@
   </div>
   
   <div class="button-container">
-    <button>Connect Wallet</button>
-    <button>Mint</button>
-    <button>Claim Airdrop</button>
+    <button id="connectButton">Connect Wallet</button>
+    <button id="mintButton">Mint</button>
+    <button id="claimAirdrop">Claim Airdrop</button>
+    <p id="walletAddress"></p>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script src="static/js/metamask.js"></script>
   
-  <div class="curzr" hidden>
-    <script src="static/js/cursor.js"></script>
-  </div>
+  <script src="static/js/cursor.js"></script>
 
 </body>
 </html>

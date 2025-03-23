@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Electrolize&family=Rajdhani:wght@400;700&display=swap');
+
+
+body {
+    font-family: 'Electrolize', sans-serif;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(20, 20, 20);
+    overflow: hidden;
+    cursor: none;
+}
+
+h1 {
+    margin-left: 2.5%;
+    margin-bottom: 1%;
+    color: rgb(200, 200, 200);
+    font-size: 400%;
+    text-shadow: #b5b5b53b 3px 3px 3px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 22px;
+    color: rgb(200, 200, 200);
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 100vw;
+}
+
+.coin-group {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    margin-top: 0px;
+}
+
+.coin-group::-webkit-scrollbar {
+    height: 8px;
+}
+
+.coin-group::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+}
+
+.coin-card {
+    background-color: #4b4b4b;
+    padding: 15px;
+    margin: 5px;
+    border-radius: 7%;
+    border: 2.5px solid #969595;
+    min-width: 200px;
+    text-align: center;
+    scroll-snap-align: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.coin-card:hover {
+    transform: scale(1.1);
+}
+
+.coin-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.coin-card h2 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: rgb(200, 200, 200);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+::selection {
+    background-color: #ffc053;
+    color: rgb(74, 74, 74);
+}
+

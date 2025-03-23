@@ -12,11 +12,12 @@ body {
     margin: 0;
     background-color: rgb(20, 20, 20);
     cursor: none;
+    overflow: hidden;
   }
   
 h1 {
     margin: 0;
-    color: rgb(126, 126, 126);
+    color: rgb(200, 200, 200);
     font-size: 400%;
     text-shadow: #b5b5b53b 3px 3px 3px;
 }

@@ -1,78 +1,41 @@
-// Global array to hold all fetched data
-let allData = [];
+const apiEndpoints = [
+    "http://localhost:5000/api/crypto",
+    "http://localhost:5000/api/activity",
+    "http://localhost:5000/api/politics"
+];
 
-// Function to fetch data from the Flask API
-async function fetchData(endpoint) {
-  try {
-    const response = await fetch(endpoint);
+async function fetchAllCoins() {
+    try {
+        // Fetch data from all three endpoints
+        const responses = await Promise.all(apiEndpoints.map(url => fetch(url)));
+        const data = await Promise.all(responses.map(res => res.json()));
 
-    // If response is okay, parse and store the data
-    if (!response.ok) {
-      throw new Error('Network response was not ok ' + response.statusText);
+        // Flatten the results into a single array
+        const coins = data.flat();
+
+        // Pass the fetched data to the rendering function
+        renderCoins(coins);
+    } catch (error) {
+        console.error("Error fetching coin data:", error);
     }
-
-    allData = await response.json();
-
-    // Initially display the first 5 items
-    displayData(0, 5); // Show the first 5 items
-  } catch (error) {
-    console.error("There was a problem with the fetch operation:", error);
-  }
 }
 
-// Function to display data on the webpage
-function displayData(startIndex, endIndex) {
-  const container = document.getElementById("data-container");
+function renderCoins(coins) {
+    const groups = [document.getElementById('group1'), document.getElementById('group2'), document.getElementById('group3')];
 
-  // Clear the container before adding new items
-  container.innerHTML = "";
+    coins.forEach((coin, index) => {
+        const coinCard = document.createElement("div");
+        coinCard.classList.add("coin-card");
+        const img_ = "static/images/favicon_.ico" // to remove but need to fix ipfs
+        coinCard.innerHTML = `
+            <img src="${img_}" alt="${coin.name}">
+            <h2>${coin.name} (${coin.symbol})</h2>
+        `;
 
-  // Slice the data array based on start and end index and display each item
-  const itemsToDisplay = allData.slice(startIndex, endIndex);
-  itemsToDisplay.forEach(itemData => {
-    const dataElement = document.createElement("div");
-    // const itemData = JSON.parse(item[1])
-
-    // Create HTML structure for each item
-    dataElement.innerHTML = `
-      <h3>${itemData.name}</h3>
-      <p><strong>Symbol:</strong> ${itemData.symbol}</p>
-      <p><strong>Description:</strong> ${itemData.description}</p>
-      <img src="${itemData.image}" alt="${itemData.name}" style="max-width: 100px;"/>
-      <hr/>
-    `;
-
-    container.appendChild(dataElement);
-  });
-
-  // If there are more items, show the 'Load More' button
-  if (endIndex < allData.length) {
-    showLoadMoreButton(endIndex);
-  }
+        if (index < 10) groups[0].appendChild(coinCard);
+        else if (index < 20) groups[1].appendChild(coinCard);
+        else groups[2].appendChild(coinCard);
+    });
 }
 
-// Function to create the 'Load More' button
-function showLoadMoreButton(startIndex) {
-  const container = document.getElementById("data-container");
-
-  // Create the 'Load More' button
-  const loadMoreButton = document.createElement("button");
-  loadMoreButton.textContent = "Load More";
-
-  // When clicked, it will load the next 5 items
-  loadMoreButton.addEventListener("click", () => {
-    const nextIndex = startIndex;
-    displayData(nextIndex, nextIndex + 5);
-  });
-
-  // Append the 'Load More' button to the container
-  container.appendChild(loadMoreButton);
-}
-
-// Example of calling the fetchData function when the page loads
-document.addEventListener("DOMContentLoaded", () => {
-  // Call the API for 'Crypto' data when the page loads
-  fetchData("http://localhost:5000/api/crypto");
-});
-
-
+document.addEventListener("DOMContentLoaded", fetchAllCoins);
