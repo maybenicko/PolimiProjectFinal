@@ -3,3 +3,4 @@ venv/
 help.py
 *__pycache__
 *creds.json
+.vercel

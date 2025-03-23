@@ -1,7 +1,7 @@
 const apiEndpoints = [
-    "http://192.168.1.7:5000/api/crypto",
-    "http://192.168.1.7:5000/api/activity",
-    "http://192.168.1.7:5000/api/politics"
+    "http://localhost:5000/api/crypto",
+    "http://localhost:5000/api/activity",
+    "http://localhost:5000/api/politics"
 ];
 
 async function fetchAllCoins() {
