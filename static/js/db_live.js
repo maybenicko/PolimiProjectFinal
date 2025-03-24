@@ -211,7 +211,7 @@ async function fetchAllCoins() {
         "name": "Rubdown Coin",
         "symbol": "$RUBL"
     }
-] // use for class presentation
+]
         const coins = live_data.flat();
 
         renderCoins(coins);

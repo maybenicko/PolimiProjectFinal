@@ -911,11 +911,10 @@ async function connectWallet() {
   if (typeof window.ethereum !== "undefined") {
       try {
           const provider = new ethers.providers.Web3Provider(window.ethereum);
-          await provider.send("eth_requestAccounts", []); // Request wallet access
+          await provider.send("eth_requestAccounts", []);
           const signer = provider.getSigner();
           const userAddress = await signer.getAddress();
 
-          // Ensure walletAddress element exists
           const walletDisplay = document.getElementById("walletAddress");
           if (!walletDisplay) {
               console.warn("⚠️ Element #walletAddress not found in the HTML.");
@@ -932,10 +931,8 @@ async function connectWallet() {
   }
 }
 
-// Attach event listener to the button
 document.getElementById("connectButton").addEventListener("click", connectWallet);
 
-// Mint NFT
 async function mintNFT() {
     if (!window.ethereum) return alert("MetaMask is required.");
 
