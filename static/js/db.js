@@ -1,7 +1,7 @@
 const apiEndpoints = [
-    "https://nickopy.pythonanywhere.com/api/crypto",
-    "https://nickopy.pythonanywhere.com/api/activity",
-    "https://nickopy.pythonanywhere.com/api/politics"
+    "http://localhost:5000/api/crypto",
+    "http://localhost:5000/api/activity",
+    "http://localhost:5000/api/politics"
 ];
 
 async function fetchAllCoins() {
