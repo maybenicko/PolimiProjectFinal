@@ -2,7 +2,7 @@ let connectButton = document.getElementById("connectButton");
 let mintButton = document.getElementById("mintButton");
 let claimButton = document.getElementById("claimButton");
 
-const mintContractAddress = "0xfEE1dbf976F71a5817A064b6622789Df5bC8b963";  // Minting contract
+const mintContractAddress = "0xd4ABcc121Dc7728A241AF8AEEaB6aE07edc668FF";  // Minting contract
 const airdropContractAddress = "0xb81302Eb4808801B7187273c53ad7F179da62078";  // Airdrop contract
 
 const mintAbi = [
