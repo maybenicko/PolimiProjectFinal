@@ -1,8 +1,6 @@
 # 🚀 Sepolia Bart Business 🚀
 
-```md
-![Alt Text](./static/images/3.png)
-```
+![Alt Text](/static/images/3.png)
 
 ## 🎨 About the Collection
 This NFT collection is deployed on the **Sepolia testnet** and offers a unique utility: **airdrop rewards in MemeCoins** to all NFT holders. Each NFT grants access to periodic airdrops of newly created MemeCoins, based on the latest trends in the crypto space.
