@@ -1,13 +1,15 @@
-// SPDX-License-Identifier: MIT 
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol"; 
-import "@openzeppelin/contracts/access/Ownable.sol"; 
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
 contract Drop is Ownable { 
 
     //We need Token that we will call, so let's create an interface for our Token;
     IERC20 public token;
+    IERC721 public nft;
 
     // Bool Mapping To track if each address received an Airdrop
     mapping ( address => bool ) public verification;
@@ -20,16 +22,20 @@ contract Drop is Ownable {
     event Withdraw ( address _to, uint amount);
 
     // Constructor - set token address and dropAmount; Ensure non-zero address
-    constructor (address _token, uint _dropAmount) Ownable(msg.sender) { 
+    constructor (address _token, uint _dropAmount, address _nft) Ownable(msg.sender) { 
         require(_token != address(0), "REJECTED with 0 Address");
+        require(_nft != address(0), "NFT contract cannot be 0");
         token = IERC20(_token);
         dropAmount = _dropAmount;
+        nft = IERC721(_nft);
     } 
 
     // Function to claim an Airdrop
     function getDrop () external { 
         require(!verification[msg.sender], "Already claimed Airdrop");
         require(msg.sender != address(0), "Rejected with 0 address");
+        require(nft.balanceOf(msg.sender) > 0, "Must own an NFT to claim");
+
         verification[msg.sender] = true;
         token.transfer(msg.sender, dropAmount);
         emit TransferDrop(msg.sender, dropAmount);

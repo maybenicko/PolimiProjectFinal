@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 contract NFT is ERC721, Ownable {
     using Strings for uint256;
 
-    uint public constant MAX_TOKENS = 55;
+    uint public constant MAX_TOKENS = 58;
     uint private constant TOKENS_RESERVED = 1;
     uint public price = 100;
     uint256 public constant MAX_MINT_PER_TX = 5;
@@ -21,7 +21,7 @@ contract NFT is ERC721, Ownable {
     string public baseExtension = ".json";
 
     constructor() ERC721("Sepolia Bart Business", "SBB") Ownable(msg.sender) {
-        baseUri = "https://bafybeibkyj5ax3f4a2guph47ifwmwss4rtqaij3uoub2mavtrelfm4hlsi.ipfs.dweb.link/";
+        baseUri = "https://bafybeie2sm26g36xljgi5ufximdbyzsskc6l6xvjof5d65v6gqg7pticvi.ipfs.dweb.link/";
         for (uint256 i = 1; i <= TOKENS_RESERVED; ++i) {
             _safeMint(msg.sender, i);
         }
@@ -61,8 +61,8 @@ contract NFT is ERC721, Ownable {
         uint256 balance = address(this).balance;
         uint256 balanceOne = balance * 70 / 100;
         uint256 balanceTwo = balance * 30 / 100;
-        ( bool transferOne, ) = payable(0x7ceB3cAf7cA83D837F9d04c59f41a92c1dC71C7d).call{value: balanceOne}("");
-        ( bool transferTwo, ) = payable(0x7ceB3cAf7cA83D837F9d04c59f41a92c1dC71C7d).call{value: balanceTwo}("");
+        ( bool transferOne, ) = payable(0xe52fd8066A4D4f086D0F5d55989FFd09A09A0E53).call{value: balanceOne}("");
+        ( bool transferTwo, ) = payable(0xe52fd8066A4D4f086D0F5d55989FFd09A09A0E53).call{value: balanceTwo}("");
         require(transferOne && transferTwo, "Transfer failed.");
     }
 
