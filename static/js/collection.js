@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
 function goToPrevious() {
     window.location.href = "index.html";
 }

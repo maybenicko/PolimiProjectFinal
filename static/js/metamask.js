@@ -3,7 +3,7 @@ let mintButton = document.getElementById("mintButton");
 let claimButton = document.getElementById("claimButton");
 
 const mintContractAddress = "0xd4ABcc121Dc7728A241AF8AEEaB6aE07edc668FF";  // Minting contract
-const airdropContractAddress = "0xb81302Eb4808801B7187273c53ad7F179da62078";  // Airdrop contract
+const airdropContractAddress = "0xCc57d4C0B6022CAF367573f55e333Af56B1FBD45";  // Airdrop contract
 
 const mintAbi = [
 	{
@@ -668,52 +668,6 @@ const airdropAbi = [
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_newTokenAddress",
-				"type": "address"
-			}
-		],
-		"name": "changeToken",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_dropper",
-				"type": "address"
-			}
-		],
-		"name": "changeVerification",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_amount",
-				"type": "uint256"
-			}
-		],
-		"name": "dropAmountChange",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getDrop",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
 				"name": "_token",
 				"type": "address"
 			},
@@ -721,6 +675,11 @@ const airdropAbi = [
 				"internalType": "uint256",
 				"name": "_dropAmount",
 				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_nft",
+				"type": "address"
 			}
 		],
 		"stateMutability": "nonpayable",
@@ -768,13 +727,6 @@ const airdropAbi = [
 		"type": "event"
 	},
 	{
-		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -792,26 +744,6 @@ const airdropAbi = [
 		],
 		"name": "TransferDrop",
 		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdraw",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
 	},
 	{
 		"anonymous": false,
@@ -833,6 +765,32 @@ const airdropAbi = [
 		"type": "event"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_newTokenAddress",
+				"type": "address"
+			}
+		],
+		"name": "changeToken",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_dropper",
+				"type": "address"
+			}
+		],
+		"name": "changeVerification",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "dropAmount",
 		"outputs": [
@@ -846,6 +804,19 @@ const airdropAbi = [
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "dropAmountChange",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "getBalance",
 		"outputs": [
@@ -853,6 +824,26 @@ const airdropAbi = [
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getDrop",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "nft",
+		"outputs": [
+			{
+				"internalType": "contract IERC721",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -873,6 +864,13 @@ const airdropAbi = [
 	},
 	{
 		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "token",
 		"outputs": [
 			{
@@ -882,6 +880,19 @@ const airdropAbi = [
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -901,6 +912,13 @@ const airdropAbi = [
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ];  // airdrop ABI
