@@ -990,4 +990,4 @@ async function claimAirdrop() {
 
 
 
-document.getElementById("claimButton").addEventListener("click", claimAirdrop);
+document.getElementById("claimAirdrop").addEventListener("click", claimAirdrop);
